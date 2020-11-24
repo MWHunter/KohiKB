@@ -1,0 +1,6 @@
+name: KohiKB
+version: ${project.version}
+main: defineoutside.pvp.KohiKB
+depend: [ProtocolLib]
+authors: [DefineOutside]
+description: A simple knockback plugin that works.
