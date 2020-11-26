@@ -7,3 +7,12 @@ description: A simple knockback plugin that works.
 commands:
   kohikb:
     description: /kohikb reload - to reload the plugin
+permissions:
+  kohikb.reload:
+    description: /kohikb reload - to reload the plugin
+    default: op
+  kohikb.*:
+    description: Wildcard permission
+    default: op
+    children:
+      kohikb.reload: true
