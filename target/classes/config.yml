@@ -1,0 +1,5 @@
+knockbackHorizontal: 0.35
+knockbackVertical: 0.35
+knockbackVerticalLimit: 0.4
+knockbackExtraHorizontal: 0.425
+knockbackExtraVertical: 0.085

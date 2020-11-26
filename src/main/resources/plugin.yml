@@ -4,3 +4,6 @@ main: defineoutside.pvp.KohiKB
 depend: [ProtocolLib]
 authors: [DefineOutside]
 description: A simple knockback plugin that works.
+commands:
+  kohikb:
+    description: /kohikb reload - to reload the plugin

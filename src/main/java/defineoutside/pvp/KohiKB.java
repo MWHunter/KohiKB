@@ -8,6 +8,10 @@ import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,7 +24,7 @@ import org.bukkit.util.Vector;
 
 import java.util.HashMap;
 
-public class KohiKB extends JavaPlugin implements Listener {
+public class KohiKB extends JavaPlugin implements Listener, CommandExecutor {
     double knockbackHorizontal = 0.35D;
     double knockbackVertical = 0.35D;
     double knockbackVerticalLimit = 0.4D;
@@ -32,6 +36,11 @@ public class KohiKB extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
+        getCommand("kohikb").setExecutor(this);
+
+        saveDefaultConfig();
+
+        getConfigValues();
 
         ProtocolManager manager = ProtocolLibrary.getProtocolManager();
         manager.addPacketListener(
@@ -60,6 +69,14 @@ public class KohiKB extends JavaPlugin implements Listener {
                     }
                 }
             });
+    }
+
+    private void getConfigValues() {
+        knockbackHorizontal = getConfig().getDouble("knockbackHorizontal");
+        knockbackVertical = getConfig().getDouble("knockbackVertical");
+        knockbackVerticalLimit = getConfig().getDouble("knockbackVerticalLimit");
+        knockbackExtraHorizontal = getConfig().getDouble("knockbackExtraHorizontal");
+        knockbackExtraVertical = getConfig().getDouble("knockbackExtraVertical");
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -113,5 +130,18 @@ public class KohiKB extends JavaPlugin implements Listener {
             // Server side velocity is useless but set it anyways to help anticheats
             velocityMap.put(event.getEntity().getEntityId(), event.getEntity().getVelocity());
         }
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (label.equalsIgnoreCase("kohikb") && sender.hasPermission("kohikb.reload") &&
+            args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+            reloadConfig();
+            getConfigValues();
+            sender.sendMessage(ChatColor.AQUA + "You have reloaded the config");
+            return true;
+        }
+
+        return false;
     }
 }
