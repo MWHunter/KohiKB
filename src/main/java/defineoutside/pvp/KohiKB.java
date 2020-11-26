@@ -36,7 +36,6 @@ public class KohiKB extends JavaPlugin implements Listener, CommandExecutor {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
-        getCommand("kohikb").setExecutor(this);
 
         saveDefaultConfig();
 
@@ -134,8 +133,7 @@ public class KohiKB extends JavaPlugin implements Listener, CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (label.equalsIgnoreCase("kohikb") && sender.hasPermission("kohikb.reload") &&
-            args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+        if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
             reloadConfig();
             getConfigValues();
             sender.sendMessage(ChatColor.AQUA + "You have reloaded the config");
