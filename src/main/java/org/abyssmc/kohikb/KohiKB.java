@@ -32,7 +32,7 @@ public class KohiKB extends JavaPlugin implements Listener, CommandExecutor {
 
     HashMap<Player, Vector> playerKnockbackHashMap = new HashMap<>();
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void onPlayerVelocityEvent(PlayerVelocityEvent event) {
         if (!playerKnockbackHashMap.containsKey(event.getPlayer())) return;
         event.setVelocity(playerKnockbackHashMap.get(event.getPlayer()));
