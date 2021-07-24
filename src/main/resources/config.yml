@@ -1,0 +1,6 @@
+knockbackHorizontal: 0.4
+knockbackVertical: 0.4
+knockbackVerticalLimit: 0.4
+knockbackExtraHorizontal: 0.5
+knockbackExtraVertical: 0.1
+enable-knockback-resistance: false

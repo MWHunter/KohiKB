@@ -1,19 +1,18 @@
-name: KohiKB
+name: LegacyKB
 version: ${project.version}
-main: org.abyssmc.kohikb.KohiKB
+main: org.abyssmc.legacykb.LegacyKB
 authors: [DefineOutside]
 description: A simple knockback plugin that works.
 commands:
-  kohikb:
-    description: /kohikb reload - to reload the plugin
+  legacykb:
+    description: /legacykb reload - to reload the plugin
     permission: kohikb.reload
 permissions:
   kohikb.reload:
-    description: /kohikb reload - to reload the plugin
+    description: /legacykb reload - to reload the plugin
     default: op
-  kohikb.*:
+  legacykb.*:
     description: Wildcard permission
     default: op
     children:
-      kohikb.reload: true
-
+      legacykb.reload: true

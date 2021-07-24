@@ -1,4 +1,4 @@
-package org.abyssmc.kohikb;
+package org.abyssmc.legacykb;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,7 +20,7 @@ import org.bukkit.util.Vector;
 
 import java.util.HashMap;
 
-public class KohiKB extends JavaPlugin implements Listener, CommandExecutor {
+public class LegacyKB extends JavaPlugin implements Listener, CommandExecutor {
     double knockbackHorizontal = 0.4D;
     double knockbackVertical = 0.4D;
     double knockbackVerticalLimit = 0.4D;
