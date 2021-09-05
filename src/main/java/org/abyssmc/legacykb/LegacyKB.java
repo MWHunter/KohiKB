@@ -126,6 +126,9 @@ public class LegacyKB extends JavaPlugin implements Listener, CommandExecutor {
         saveDefaultConfig();
         getConfigValues();
 
+        // Hack around issue with knockback in wrong tick
+        Bukkit.getScheduler().runTaskTimer(this, playerKnockbackHashMap::clear, 1, 1);
+
         // haha this is terrible
         if (Bukkit.getVersion().contains("1.7") || Bukkit.getVersion().contains("1.8") ||
                 Bukkit.getVersion().contains("1.9") || Bukkit.getVersion().contains("1.10") ||
@@ -136,9 +139,6 @@ public class LegacyKB extends JavaPlugin implements Listener, CommandExecutor {
 
         if (Bukkit.getVersion().contains("1.8") || Bukkit.getVersion().contains("1.7")) return;
         hasShields = true;
-
-        // Hack around issue with knockback in wrong tick
-        Bukkit.getScheduler().runTaskTimer(this, playerKnockbackHashMap::clear, 1, 1);
     }
 
     private void getConfigValues() {
