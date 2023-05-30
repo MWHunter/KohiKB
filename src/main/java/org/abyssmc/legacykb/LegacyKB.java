@@ -39,7 +39,7 @@ public class LegacyKB extends JavaPlugin implements Listener, CommandExecutor {
         playerKnockbackHashMap.remove(event.getPlayer());
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onEntityDamageEntity(EntityDamageByEntityEvent event) {
         // Check if sword PvP, not PvE or EvE
         if (event.getDamager() instanceof Player && event.getEntity() instanceof Player && !event.isCancelled() && event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)) {
